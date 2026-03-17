@@ -1,49 +1,72 @@
-Anonymous Repository for "Self-Supervised Multi-Contrast MRI Reconstruction using Permutation-Driven Contrast Invariance"
+# Anonymous Repository
+### Self-Supervised Multi-Contrast MRI Reconstruction using Permutation-Driven Contrast Invariance
 
-This repository contains the anonymous implementation associated with a paper currently under review at MICCAI.
+This repository contains the **anonymous implementation** associated with a paper currently under review at **MICCAI**.
 
-Overview
+---
 
-Multi-contrast MRI reconstruction aims to exploit complementary information across different MRI contrasts to improve image reconstruction from undersampled k-space data. However, many existing approaches implicitly rely on fixed contrast ordering or predefined contrast roles, which can limit robustness when contrast availability or acquisition conditions vary.
+## Overview
 
-In this work, we propose a contrast-invariant self-supervised reconstruction framework that treats input contrasts as an unordered set rather than a fixed channel stack. To enforce this property, we introduce permutation-based training, which removes contrast-order shortcuts and encourages the network to learn content-driven interactions across contrasts.
+Multi-contrast MRI reconstruction aims to exploit **complementary anatomical information across different MRI contrasts** to improve image reconstruction from **undersampled k-space data**.
 
-The proposed method operates in a self-supervised setting, enabling training directly from undersampled k-space data without requiring fully sampled reference images.
+However, many existing learning-based approaches implicitly rely on:
 
-Key Features
+- **Fixed contrast ordering**
+- **Predefined contrast roles**
 
-Self-supervised reconstruction from undersampled multi-coil k-space data (no fully sampled references required)
+These design choices can limit robustness when **contrast availability** or **acquisition conditions** vary.
 
-Permutation-driven contrast invariance to eliminate contrast-order shortcuts
+In this work, we propose a **contrast-invariant self-supervised reconstruction framework** that treats input contrasts as an **unordered set** rather than a fixed channel stack.
 
-Content-driven fusion across contrasts using a contrast fusion architecture
+To enforce this property, we introduce **permutation-based training**, which removes contrast-order shortcuts and encourages the network to learn **content-driven interactions across contrasts**.
 
-Spatial–frequency feature integration for improved artifact suppression
+The proposed method operates in a **self-supervised setting**, enabling training directly from **undersampled k-space data without requiring fully sampled reference images**.
 
-Prompt-based conditioning to support multiple acceleration factors and sampling trajectories
+---
 
-Robust generalization to unseen contrast configurations and acquisition settings
+## Key Features
 
-Datasets
+- ✔ **Self-supervised reconstruction** from undersampled multi-coil k-space data  
+- ✔ **Permutation-driven contrast invariance** to eliminate contrast-order shortcuts  
+- ✔ **Content-driven contrast fusion architecture** for multi-contrast interaction  
+- ✔ **Spatial–frequency feature integration** for improved artifact suppression  
+- ✔ **Prompt-based conditioning** supporting multiple acceleration factors and sampling trajectories  
+- ✔ **Robust generalization** to unseen contrast configurations and acquisition settings  
+
+---
+
+## Datasets
 
 Experiments in the paper were conducted using publicly available datasets:
 
-BraTS – multi-contrast brain MRI dataset (T1w, T2w, FLAIR, T1ce)
+### BraTS
+Multi-contrast brain MRI dataset including:
+- **T1-weighted**
+- **T2-weighted**
+- **FLAIR**
+- **T1ce**
 
-M4Raw – multi-contrast MRI dataset with raw k-space measurements
+### M4Raw
+Multi-contrast MRI dataset providing **raw k-space measurements**.
 
-Data preprocessing and preparation scripts are provided in this repository.
+Data preprocessing and preparation scripts are included in this repository.
 
-Code Availability
+---
 
-The repository includes:
+## Code Availability
 
-Training and evaluation scripts
+This repository includes:
 
-Data preprocessing utilities
+- Training scripts
+- Evaluation scripts
+- Model implementation
+- Data preprocessing utilities
+- Configuration files for experiments
 
-Model implementation
+---
 
-Configuration files for experiments
+## Anonymity Notice
 
-To preserve anonymity during the review process, author identities and affiliations have been removed. Code will be fully released upon acceptance.
+To preserve **double-blind review**, author identities and affiliations have been removed from this repository.
+
+The full implementation and documentation will be released publicly upon acceptance.
