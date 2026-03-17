@@ -1,0 +1,45 @@
+training_parameters:
+  num_workers: 2
+  max_epochs: 50
+  batch_size: 1
+  lr: 0.001
+
+dataset_parameters:
+  R: 8.0
+  dataset: brats 
+  contrasts:
+    - t1
+  nx: 256
+  ny: 256
+  limit_volumes: 1
+
+model_parameters:
+  data_dir: '/home/brenden/Documents/Coding/data/sim_subset_1e-2_4chan'
+  test_dir: '/home/brenden/Documents/Coding/data/sim_subset_1e-2_4chan'
+  chans: 10
+  cascades: 6
+  image_scaling_lam_full: 1.0e-4
+  image_scaling_full_inv: 1.0e-5
+  image_scaling_lam_inv: 1.0e-5
+  lambda_scaling: 0.65
+  sigmoid_slope2: 200
+  sigmoid_slope1: 5
+  k_loss: 'l1'
+  pass_inverse_data: true
+  pass_all_data: true
+  learn_sampling: false 
+  seperate_model: false
+  image_loss: l1_grad
+  all_data_no_grad: true 
+  pass_through_size: 10
+  sampling_method: 1d
+
+  warmup_training: False
+  norm_method: 'image_mean'
+  warm_start: true
+  line_constrained: true
+
+
+logging_parameters:
+  project: "MRI Reconstruction"
+  run_name: Dual Domain

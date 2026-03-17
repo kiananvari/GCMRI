@@ -1,0 +1,123 @@
+training_parameters:
+  num_workers: 2
+  max_epochs: 100
+  batch_size: 2
+  lr: 0.0002
+
+
+dataset_parameters:
+  R: 8.0
+  R_values: [4.0, 6.0, 8.0]
+  R_curriculum_stages:
+    stages:
+      - epochs: 10
+        probs: [0.6, 0.3, 0.1]
+      - epochs: 10
+        probs: [0.2, 0.6, 0.2]
+      - epochs: 10
+        probs: [0.2, 0.2, 0.6]
+      - epochs: 20
+        probs: [0.33, 0.33, 0.33]
+
+  dataset: brats 
+  contrasts:
+    - t1
+    - t2
+    - flair
+    - t1ce
+
+  # Exclude these contrasts from training loss only (still evaluated in val/test)
+  contrast_excluding_training:
+    - 't1ce'
+
+  nx: 256
+  ny: 256
+
+  # Reproducibility
+  same_mask_all_epochs: true
+
+  #----- Joint reconstruction settings
+  jointly_reconstructing: true
+  guided_single_contrast: false
+
+  #----- Training permutation settings (jointly_reconstructing=true)
+  permute_contrasts: false
+  num_permutations_per_slice: 4
+  permutation_seed: 0
+  include_identity_permutation: true
+
+  #----- Validation permutation settings
+  val_permute_contrasts: false
+  val_num_permutations_per_slice: 4
+  val_permutation_seed: 0
+  val_include_identity_permutation: true
+
+
+logging_parameters:
+  project: "MRI Reconstruction_MICCAI"
+  run_name: 'dd_multi_baseline'
+
+
+model_parameters:
+  data_dir: '/home/anvariha/projects/def-bmac/sim_256_noise'
+  test_dir: '/home/anvariha/projects/def-bmac/sim_256_noise'
+
+  grad_clip_val: 1.0
+  grad_clip_algo: 'norm'
+
+  disable_checkpoints: true
+  intermediate_test: true
+  
+  image_scaling_lam_full: 1.0e-6
+  image_scaling_full_inv: 1.0e-6
+  image_scaling_lam_inv: 6.0e-08
+  lambda_scaling: 0.65
+  sigmoid_slope2: 200
+  sigmoid_slope1: 5
+
+  k_loss: 'l1'
+  image_loss: ssim
+  #image_loss: l1_grad
+
+  pass_inverse_data: true
+  pass_all_data: true
+  learn_sampling: false 
+  
+  seperate_model: false
+  all_data_no_grad: true 
+  pass_through_size: 10
+  sampling_method: 1d
+  mask_threshold_t1: 0.1
+
+  warmup_training: False
+  norm_method: 'image_mean'
+  warm_start: true
+  line_constrained: true
+
+  # Directory for saving custom logs (images, metrics, etc.)
+  logging_dir: './logs'  # Set to desired root path for experiment outputs
+
+  model: 'unet'
+  chans: 64
+  depth: 4
+  cascades: 12
+  upsample_method: 'conv'
+  promptmr_feature_dim_like_unet: true
+
+  promptmr_use_cabs: true
+  promptmr_use_instancenorm: true
+  promptmr_use_freq_cab: false
+  promptmr_use_fremodule: false
+
+  promptmr_use_prompt_injection: false
+
+  promptmr_contrast_aware_stem: true
+  promptmr_stem_use_freq_mix: true
+  promptmr_stem_mix_freq_mode: 'all'
+  promptmr_contrast_attn_heads: 4
+  promptmr_contrast_attn_gate_init: 0.5
+  
+  promptmr_enable_buffer: false
+  promptmr_enable_history: false
+
+

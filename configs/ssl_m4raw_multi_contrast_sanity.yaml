@@ -1,0 +1,102 @@
+# Self supervised config file for train.py
+dataset_params:
+
+  data_dir: '/home/anvariha/projects/def-mchiew/kadotab/Datasets/M4raw_chunked'
+  test_dir: '/home/anvariha/projects/def-mchiew/kadotab/Datasets/M4raw_chunked'
+  dataset: 'm4raw'
+
+  nx: 256
+  ny: 256
+  num_workers: 2
+  norm_method: 'image_mean'
+
+
+  jointly_reconstructing: true
+  guided_single_contrast: false
+
+  # Ablation: multi-contrast permutation augmentation (jointly_reconstructing=true)
+  permute_contrasts: false
+  num_permutations_per_slice: 4
+  permutation_seed: 0
+  include_identity_permutation: true
+
+  #----- Validation permutation settings
+  val_permute_contrasts: false
+  val_num_permutations_per_slice: 4
+  val_permutation_seed: 0
+  val_include_identity_permutation: true
+
+  contrasts:
+    - 't1'
+    - 't2'
+    - 'flair'
+
+  # Exclude these contrasts from training loss only (still evaluated in val/test)
+#  contrast_excluding_training:
+#    - 't1ce'
+
+  # Synthetic contrast evaluation (pairwise averaging in val/test)
+#  enable_synthetic_contrast_eval: true
+
+  limit_volumes: 1.0
+  R: 8.0
+  R_values: [4.0, 6.0, 8.0]
+  R_curriculum_stages:
+    stages:
+      - epochs: 10
+        probs: [0.6, 0.3, 0.1]
+      - epochs: 10
+        probs: [0.2, 0.6, 0.2]
+      - epochs: 10
+        probs: [0.2, 0.2, 0.6]
+      - epochs: 20
+        probs: [0.33, 0.33, 0.33]
+  sampling_method: '2d'
+  mask_threshold_t1: 0.1
+
+  # Reproducibility
+  same_mask_all_epochs: true
+
+training_params:
+  max_epochs: 50
+  batch_size: 4
+  lr: 0.0002
+  grad_clip_val: 1.0
+  grad_clip_algo: 'norm'
+
+  disable_checkpoints: false
+  intermediate_test: false
+  sanity_check_run: false
+
+  supervised: false
+  k_loss: 'l1'
+  lambda_scaling: 1
+  project: 'MRI_Reconstruction_PAPER_M4RAW'
+  run_name: 'ssl_multi_baseline'
+
+# Directory for saving custom logs (images, metrics, etc.)
+logging_dir: './logs'  # Set to desired root path for experiment outputs
+
+model_parameters:
+  model: 'unet'
+  chans: 64
+  depth: 4
+  cascades: 12
+  upsample_method: 'conv'
+  promptmr_feature_dim_like_unet: false
+
+  promptmr_use_cabs: true
+  promptmr_use_instancenorm: true
+  promptmr_use_freq_cab: true
+  promptmr_use_fremodule: true
+
+  promptmr_use_prompt_injection: true
+
+  promptmr_contrast_aware_stem: true
+  promptmr_stem_use_freq_mix: true
+  promptmr_stem_mix_freq_mode: 'all'
+  promptmr_contrast_attn_heads: 4
+  promptmr_contrast_attn_gate_init: 0.5
+  
+  promptmr_enable_buffer: false
+  promptmr_enable_history: true
