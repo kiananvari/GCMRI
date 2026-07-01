@@ -1,7 +1,7 @@
 # Anonymous Repository
 ### Self-Supervised Multi-Contrast MRI Reconstruction using Permutation-Driven Contrast Invariance
 
-This repository contains the **anonymous implementation** associated with a paper currently under review at **MICCAI**.
+This repository contains the **anonymous implementation** associated with a paper currently under review at **RIME 2026**.
 
 ---
 
