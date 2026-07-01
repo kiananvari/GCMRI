@@ -24,17 +24,6 @@ The proposed method operates in a **self-supervised setting**, enabling training
 
 ---
 
-## Key Features
-
-- ✔ **Self-supervised reconstruction** from undersampled multi-coil k-space data  
-- ✔ **Permutation-driven contrast invariance** to eliminate contrast-order shortcuts  
-- ✔ **Content-driven contrast fusion architecture** for multi-contrast interaction  
-- ✔ **Spatial–frequency feature integration** for improved artifact suppression  
-- ✔ **Prompt-based conditioning** supporting multiple acceleration factors and sampling trajectories  
-- ✔ **Robust generalization** to unseen contrast configurations and acquisition settings  
-
----
-
 ## Datasets
 
 Experiments in the paper were conducted using publicly available datasets:
