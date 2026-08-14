@@ -8,10 +8,8 @@
 
 ## News
 
-**2026.07.31** - Our paper was accepted as an **Oral Presentation** at **RIME 2026 @ MICCAI 2026**. 🎉
+**2026.07.31** - Our paper was accepted for an **Oral Presentation** at **RIME 2026 @ MICCAI 2026**. 🎉
 
-## Code
-
-Code, pretrained models, and documentation will be released soon.
+## Installation
 
 **Stay tuned!**
