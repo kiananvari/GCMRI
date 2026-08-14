@@ -1,61 +1,17 @@
-# Anonymous Repository
-### Self-Supervised Multi-Contrast MRI Reconstruction using Permutation-Driven Contrast Invariance
+# [RIME 2026 @ MICCAI] Self-Supervised Multi-Contrast MRI Reconstruction via Permutation-Driven Contrast Invariance
 
-This repository contains the **anonymous implementation** associated with a paper currently under review at **RIME 2026**.
+**Kian Anvari Hamedani**¹˒², **Brenden Kadota**³, **Mark Chiew**¹˒²
 
----
+¹ Department of Medical Biophysics, University of Toronto
+² Sunnybrook Research Institute
+³ Department of Radiology and Biomedical Imaging, University of California, San Francisco
 
-## Overview
+## News
 
-Multi-contrast MRI reconstruction aims to exploit **complementary anatomical information across different MRI contrasts** to improve image reconstruction from **undersampled k-space data**.
+**2026.07.31** - Our paper was accepted as an **Oral Presentation** at **RIME 2026 @ MICCAI 2026**. 🎉
 
-However, many existing learning-based approaches implicitly rely on:
+## Code
 
-- **Fixed contrast ordering**
-- **Predefined contrast roles**
+Code, pretrained models, and documentation will be released soon.
 
-These design choices can limit robustness when **contrast availability** or **acquisition conditions** vary.
-
-In this work, we propose a **contrast-invariant self-supervised reconstruction framework** that treats input contrasts as an **unordered set** rather than a fixed channel stack.
-
-To enforce this property, we introduce **permutation-based training**, which removes contrast-order shortcuts and encourages the network to learn **content-driven interactions across contrasts**.
-
-The proposed method operates in a **self-supervised setting**, enabling training directly from **undersampled k-space data without requiring fully sampled reference images**.
-
----
-
-## Datasets
-
-Experiments in the paper were conducted using publicly available datasets:
-
-### BraTS
-Multi-contrast brain MRI dataset including:
-- **T1-weighted**
-- **T2-weighted**
-- **FLAIR**
-- **T1ce**
-
-### M4Raw
-Multi-contrast MRI dataset providing **raw k-space measurements**.
-
-Data preprocessing and preparation scripts are included in this repository.
-
----
-
-## Code Availability
-
-This repository includes:
-
-- Training scripts
-- Evaluation scripts
-- Model implementation
-- Data preprocessing utilities
-- Configuration files for experiments
-
----
-
-## Anonymity Notice
-
-To preserve **double-blind review**, author identities and affiliations have been removed from this repository.
-
-The full implementation and documentation will be released publicly upon acceptance.
+**Stay tuned!**
